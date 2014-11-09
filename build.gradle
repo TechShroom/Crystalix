@@ -45,6 +45,7 @@ configFile.withReader {
 
 dependencies {
     compile "codechicken:CodeChickenLib:${config.mc.version}-${config.ccl.version}:dev"
+    compile "com.mod-buildcraft:buildcraft:${config.bc.version}:dev"
 }
 
 def build_number = (System.getenv("BUILD_NUMBER") ?: "1")
