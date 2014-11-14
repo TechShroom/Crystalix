@@ -19,6 +19,7 @@ buildscript {
 }
 
 repositories {
+    mavenLocal()
     maven {
         name "chickenbones"
         url "http://chickenbones.net/maven/"
@@ -45,6 +46,7 @@ configFile.withReader {
 
 dependencies {
     compile "codechicken:CodeChickenLib:${config.mc.version}-${config.ccl.version}:dev"
+    compile "com.techshroom:TSModCore:${config.modcore.version}"
     compile files("libs/buildcraft-${config.bc.version}-dev.jar")
 }
 
