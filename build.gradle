@@ -17,8 +17,29 @@ buildscript {
         classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
     }
 }
+println "Adding utility attributes to $project.name..."
+
+// return true if there is a property `prop` from Gradle, Java system properties, or environment, in that order.
+ext._hasProperty = { prop ->
+    def res = _property(prop)
+    return res != null && res != ""
+}
+
+// get property from Gradle, Java system properties, or environment, in that order.
+ext._property = { prop ->
+    if (project.hasProperty(prop))
+        return project.property(prop)
+    def res = System.getProperty(prop, null)
+    if (res)
+        return res
+    res = System.getenv(prop)
+    if (res)
+        return res
+    return null
+}
 
 repositories {
+    mavenCentral()
     mavenLocal()
     maven {
         name "chickenbones"
@@ -43,15 +64,17 @@ configFile.withReader {
     prop.load(it)
     project.ext.config = new ConfigSlurper().parse prop
 }
-
+configurations.all {
+    resolutionStrategy.cacheDynamicVersionsFor 0, 'seconds'
+}
 dependencies {
     compile "codechicken:CodeChickenLib:${config.mc.version}-${config.ccl.version}:dev"
     compile "com.techshroom:TSModCore:${config.modcore.version}"
     compile files("libs/buildcraft-${config.bc.version}-dev.jar")
 }
 
-def build_number = (System.getenv("BUILD_NUMBER") ?: "1")
-version =  "${project.config.mod.version}." + build_number
+def build_number = (_property("BUILD_NUMBER") ?: "1")
+version =  "${project.config.mod.version}." + build_number + (_hasProperty("SNAPSHOT") ? "-" + _property("SNAPSHOT") : "")
 
 println config.mc.version + "-" + config.forge.version
 // Setup the forge minecraft plugin data. Specify the preferred forge/minecraft version here
