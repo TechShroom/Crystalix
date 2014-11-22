@@ -1,6 +1,10 @@
 package com.techshroom.mods.crystalix;
 
+import com.techshroom.mods.common.ClientProxy;
+import com.techshroom.mods.common.Proxy;
+
 import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.SidedProxy;
 
 /**
  * Crystalix's main mod class.
@@ -27,4 +31,26 @@ public class CrystalixMod {
      * End-user name for the mod.
      */
     public static final String USER_FRIENDLY_NAME = "Crystalix";
+
+    @SidedProxy(clientSide = ClientProxy.QUALNAME, serverSide = Proxy.QUALNAME)
+    private static Proxy PROXY;
+
+    /**
+     * Get the proxy currently in use.
+     * 
+     * @return a reference to the current Proxy in use.
+     */
+    public static Proxy proxy() {
+        return PROXY;
+    }
+
+    {
+        proxySetup();
+    }
+
+    /**
+     * Initialization code to register everything to the proxy
+     */
+    private void proxySetup() {
+    }
 }
