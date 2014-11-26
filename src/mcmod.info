@@ -1,0 +1,15 @@
+[
+{
+  "modid": "crystalix",
+  "name": "Crystalix Mod",
+  "description": "A mod that adds Crystalix to Minecraft.",
+  "version": "@VERSION@",
+  "url": "",
+  "updateUrl": "",
+  "authors": "TechShroom",
+  "credits": "kiarocks, main coder",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
