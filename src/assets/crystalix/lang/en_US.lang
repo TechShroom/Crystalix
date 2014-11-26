@@ -1,0 +1,7 @@
+itemGroup.crystalixBlocks=Crystalix Blocks
+tile.oreCrystalix.name=Crystalix Ore
+tile.mutator.name=Crystalix Mutator
+
+item.ingotCrystalix.name=Crystalix Ingot
+
+container.crystalixMut=Crystalix Mutator
