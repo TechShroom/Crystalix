@@ -91,7 +91,8 @@ public class CrystalixMod {
         Proxy p = proxy();
         String oreBlockID = "oreCrystalix";
         RBBuilder.NoTile<CrystalixOre> oreBlock =
-                new RBBuilder.NoTile<CrystalixOre>(CrystalixOre.class, oreBlockID);
+                new RBBuilder.NoTile<CrystalixOre>(CrystalixOre.class,
+                        oreBlockID);
         oreBlock.setBlockName("oreCrystalix");
         oreBlock.setBlockTextureName(ID + ":crystalix_ore");
         oreBlock.setCreativeTab(tabBlocks);
