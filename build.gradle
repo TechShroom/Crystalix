@@ -73,7 +73,7 @@ configurations.all {
 }
 dependencies {
     compile "codechicken:CodeChickenLib:${config.mc.version}-${config.ccl.version}:dev"
-    compile "com.techshroom:TSModCore:${config.modcore.version}"
+    compile "com.techshroom:TSModCore:${config.modcore.version}:dev"
     compile files("libs/buildcraft-${config.bc.version}-dev.jar")
 }
 
